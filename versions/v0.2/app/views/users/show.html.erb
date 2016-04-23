@@ -1,0 +1,68 @@
+<!DOCTYPE html>
+<html>
+<head>
+<title><%= @user.display_name %>'s User Page'</title>
+<link rel="stylesheet" href="styles.css">
+<link href='https://fonts.googleapis.com/css?family=Josefin+Slab:600' rel='stylesheet' type='text/css'>
+</head>
+<body>
+  <header class="header-fixed">
+    <% if @user.partner_boolean %>
+      <img class="user-logo-true" src="<%= @user.logo %>">
+    <% else %>
+      <img class="user-logo-false" src="<%= @user.logo %>">
+    <% end %>
+    <p><%= @user.display_name %></p><br>
+  </header>
+  <div class="content">
+<h2> Stream Info </h2><br>
+<div class="stream-info-all clearfix">
+  <div class="f-f-v">
+    <div class ="capture-box"><div class="box-title">Follower Count: </div>
+          <% if @user.follower_count.to_s.length > 5 %>
+                <div class="content-box-small"><%= @user.follower_count %></div></div>
+          <% else %>
+                <div class="content-box-large"><%= @user.follower_count %></div></div>
+          <% end %>
+    <div class ="capture-box"><div class="box-title">Following Count:</div><div class="content-box-large"><%= @user.following_count %></div></div>
+
+    <div class ="capture-box"><div class="box-title">Total Views: </div>
+          <% if @user.total_views.to_s.length > 5 %>
+                <div class="content-box-small"><%= @user.total_views %></div></div>
+          <% else %>
+                <div class="content-box-large"><%= @user.total_views %></div></div>
+          <% end %>
+  </div>
+</div>
+<br><br>
+<h2> Game Info </h2>
+<div class="games-info">
+  <div class="f-f-v">
+    <div class ="top-game-box">
+      <div class="top-game-title">Top Game Played <br> <%= @top_game[0] %><br></div>
+      <img src="<%= @top_game[2]%>"><br>
+      <div class="top-game-footer">Number of Days Streamed<br>
+        <span class="days-streamed"><%= @top_game[1] %></span></div>
+    </div>
+    <div class ="top-game-box">
+      <div class="top-game-title">Last Game Played <br> <%= @user.last_game_played %><br></div>
+      <img src= "<%= Games.where('name = ?', @user.last_game_played).first.logo %>"><br>
+      <div class="top-game-footer">Last Stream Title:  <br><%= @user.last_stream_title.first(50) %></div>
+    </div>
+  </div>
+</div>
+<br>
+<br>
+<h2> Basic Info </h2> <br>
+<div class='basic-info'>
+
+<h1>Creation Date: <%= @user.created_at[5..6] %>-<%= @user.created_at[8..9] %>-<%= @user.created_at[0..3] %></h1>
+<h1>Last Update: <%= @user.updated_at[5..6] %>-<%= @user.updated_at[8..9] %>-<%= @user.updated_at[0..3] %> | <%= @user.updated_at[11..15] %> GMT </h1>
+</div>
+</div>
+<div></div>
+<footer class="footer-fixed">
+<a class="index-link" href='index.html'> Index </a>
+</footer>
+</body>
+</html>

@@ -1,0 +1,2 @@
+database: 'db/users.db'
+adapter: 'sqlite3'

@@ -1,0 +1,11 @@
+# A sample Gemfile
+source "https://rubygems.org"
+require 'bundler'
+#gem 'kappa'
+gem 'rest-client'
+#gem 'open-uri'
+gem 'nokogiri'
+gem 'activerecord'
+gem 'sqlite3'
+gem 'json', '>=1.7'
+gem 'minitest' , '~>5.1'

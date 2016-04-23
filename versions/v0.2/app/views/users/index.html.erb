@@ -1,0 +1,22 @@
+<!DOCTYPE html>
+<html>
+<head>
+<title>INDEX PAGE</title>
+<link rel="stylesheet" href="styles.css">
+<link href='https://fonts.googleapis.com/css?family=Josefin+Slab:600' rel='stylesheet' type='text/css'>
+</head>
+<body>
+<div class="content-index">
+<h2> List of All Users </h2>
+<ul class="index-listing">
+<% Dir.foreach('./site/users/') do |x| %>
+  <% if x.split('.')[-1] == 'html' && x.split('.')[-2] != 'index' %>
+    <li><a class="index-link-home" href = '<%="#{x}" %>' > <%="#{x.split('.')[-2]}"%> </a></li><br>
+  <% else %>
+    <% #do nothing %>
+  <% end %>
+<% end %>
+</ul>
+</div>
+</body>
+</html>
